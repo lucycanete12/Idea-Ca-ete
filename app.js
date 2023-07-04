@@ -72,6 +72,7 @@ function agregarACarrito(producto){
 let filtro = document.getElementById('filtro');
 let min = document.getElementById('min');
 let max = document.getElementById('max');
+let marca = document.getElementById('marca') 
 
 //funcion para poder filtrar por precio
 function filtrarPorPrecio(precioMin, precioMax){
@@ -90,11 +91,30 @@ filtro.onclick = () => {
     }
 }
 
+//funcion para filtrar por marca
+function filtrarPorModelo(modelo){
+    const filtrados = productos.filter((prod) => prod.modelo.toLowerCase().includes(modelo.toLowerCase()));
+    sessionStorage.setItem('filtrados', JSON.stringify(filtrados));
+    return filtrados;
+}
 
+filtroNombre.onclick = () => {
+    console.log('click');
+    console.log(modelo.value)
+    if(modelo.value != ''){
+        let listaFiltrados = filtrarPorModelo(modelo.value);
+        console.log(listaFiltrados);
+        renderizarProductos(listaFiltrados);
+    }
+}
 
-
-
-
+//funcion para agregar el producto al carrito
+const agregarACarrito = (id) => {
+    //si el producto no esta en el carrito, lo agregamos
+    if (!CanvasRenderingContext2D.som((producto) => producto.id === id)) {
+        //buscamos el producto en el array de productos
+    }
+}
 
 
 
